@@ -68,7 +68,7 @@ var roleRepairUnit = {
                 }
             }
         }
-        else if (Game.spawns['its my first time (UwU)'].room.energyAvailable >= 200) {
+        else if (Game.spawns['Spawn1'].room.energyAvailable >= 200) {
             var sources = creep.room.find(FIND_STRUCTURES, {
                 filter: (structure) => {
                     return (structure.structureType == STRUCTURE_EXTENSION ||

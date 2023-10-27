@@ -1,9 +1,17 @@
+/*
+ * Module code goes here. Use 'module.exports' to export things:
+ * module.exports.thing = 'a thing';
+ *
+ * You can import it from another modules like this:
+ * var mod = require('role.harvester');
+ * mod.thing == 'a thing'; // true
+ */
 
 function findFurthest(creep, sources) {
     var furthest = 0;
     var furthestIndex = 0;
     for (var i = 0; i < sources.length; i++) {
-        var path = Game.spawns['its my first time (UwU)'].pos.findPathTo(sources[i]);
+        var path = Game.spawns['Spawn1'].pos.findPathTo(sources[i]);
         if (path.length > furthest) {
             furthest = path.length;
             furthestIndex = i;
@@ -12,13 +20,12 @@ function findFurthest(creep, sources) {
     return furthestIndex;
 }
 
-
-var roleGraverobber = {
+var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function (creep) {
         if (creep.store.getFreeCapacity() > 0) {
-            var sources = creep.room.find(FIND_TOMBSTONES);
+            var sources = creep.room.find(FIND_SOURCES);
             var furthestIndex = findFurthest(creep, sources);
             if (creep.harvest(sources[furthestIndex]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(sources[furthestIndex], {
@@ -41,8 +48,7 @@ var roleGraverobber = {
                 }
             }
         }
-        
-    }
+	}
 };
 
-module.exports = roleGraverobber;
+module.exports = roleHarvester;
